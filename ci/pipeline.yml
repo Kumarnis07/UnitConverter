@@ -1,0 +1,21 @@
+---
+resources:
+  - name: conversionofunit
+    type: git
+    source:
+      uri: git clone https://smarty_123@bitbucket.org/smarty_123/conversionofunit.git
+      branch: master
+      username: smarty_123
+      password: L0gin@Bitbucket
+      
+jobs:
+  - name: run-test
+    public: true
+    serial: true
+    plan:
+      - get: conversionofunit
+        trigger: true
+      - task: unit-test
+        file: conversionofunit/ci/build.yml
+
+
